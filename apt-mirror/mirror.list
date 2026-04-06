@@ -1,0 +1,18 @@
+set base_path         /var/spool/apt-mirror
+set nthreads          60
+set _tilde            0
+
+deb-amd64 http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-arm64 http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+
+deb-amd64 http://deb.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb-arm64 http://deb.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+
+deb-amd64 http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+deb-arm64 http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+
+clean http://deb.debian.org/debian
+clean http://deb.debian.org/debian-security
