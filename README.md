@@ -1,11 +1,11 @@
 # apt-mirror
 
-Local Debian Trixie mirror serving amd64, arm64, and source packages via Docker.
+Local mirror for Debian and Ubuntu repositories, serving amd64, arm64, and source packages via Docker.
 
 ## Prerequisites
 
 - Docker and Docker Compose
-- Sufficient disk space (~300+ GB for a full mirror)
+- Sufficient disk space (~1 TB+ for all mirrored distributions)
 
 ## Setup
 
@@ -40,26 +40,61 @@ The initial sync will take a significant amount of time depending on your connec
 
 Configured in `apt-mirror/mirror.list`:
 
-- **Debian Trixie** — `main contrib non-free non-free-firmware`
-- **Trixie Security** — `trixie-security`
-- **Trixie Updates** — `trixie-updates`
-- **Architectures:** amd64, arm64, source
+| Distribution          | Components                                      | Architectures      |
+|-----------------------|-------------------------------------------------|---------------------|
+| Debian Trixie         | `main contrib non-free non-free-firmware`        | amd64, arm64, src  |
+| Debian Bookworm       | `main contrib non-free non-free-firmware`        | amd64, arm64, src  |
+| Ubuntu 24.04 (Noble)  | `main restricted universe multiverse`            | amd64, arm64, src  |
+
+Each distribution includes base, security, and update repos. Ubuntu also includes backports.
 
 ## Client Configuration
 
-On machines in your local subnet, update `/etc/apt/sources.list` to point to the mirror host:
+On machines in your local subnet, replace `<MIRROR>` below with the IP or hostname of the machine running this stack. Use port `8020` if port 80 is unavailable (e.g., `http://<MIRROR>:8020/...`).
 
-```
-deb http://<mirror-host-ip>/deb.debian.org/debian trixie main contrib non-free non-free-firmware
-deb http://<mirror-host-ip>/deb.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
-deb http://<mirror-host-ip>/deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
-```
-
-Replace `<mirror-host-ip>` with the IP address of the machine running this stack. Use port `8020` if port 80 is unavailable (e.g., `http://<mirror-host-ip>:8020/...`).
-
-Then run:
+### Debian Trixie
 
 ```bash
+sudo tee /etc/apt/sources.list <<EOF
+deb http://<MIRROR>/deb.debian.org/debian trixie main contrib non-free non-free-firmware
+deb http://<MIRROR>/deb.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+deb http://<MIRROR>/deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+EOF
+sudo apt update
+```
+
+### Debian Bookworm
+
+```bash
+sudo tee /etc/apt/sources.list <<EOF
+deb http://<MIRROR>/deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb http://<MIRROR>/deb.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+deb http://<MIRROR>/deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+EOF
+sudo apt update
+```
+
+### Ubuntu 24.04 (Noble) — amd64
+
+```bash
+sudo tee /etc/apt/sources.list <<EOF
+deb http://<MIRROR>/archive.ubuntu.com/ubuntu noble main restricted universe multiverse
+deb http://<MIRROR>/archive.ubuntu.com/ubuntu noble-updates main restricted universe multiverse
+deb http://<MIRROR>/archive.ubuntu.com/ubuntu noble-security main restricted universe multiverse
+deb http://<MIRROR>/archive.ubuntu.com/ubuntu noble-backports main restricted universe multiverse
+EOF
+sudo apt update
+```
+
+### Ubuntu 24.04 (Noble) — arm64
+
+```bash
+sudo tee /etc/apt/sources.list <<EOF
+deb http://<MIRROR>/ports.ubuntu.com/ubuntu-ports noble main restricted universe multiverse
+deb http://<MIRROR>/ports.ubuntu.com/ubuntu-ports noble-updates main restricted universe multiverse
+deb http://<MIRROR>/ports.ubuntu.com/ubuntu-ports noble-security main restricted universe multiverse
+deb http://<MIRROR>/ports.ubuntu.com/ubuntu-ports noble-backports main restricted universe multiverse
+EOF
 sudo apt update
 ```
 
