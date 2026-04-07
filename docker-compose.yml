@@ -3,8 +3,7 @@ services:
     image: nginx:stable-alpine
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "8020:80"
+      - "8888:80"
     volumes:
       - ./mirror/mirror:/usr/share/nginx/html:ro
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
