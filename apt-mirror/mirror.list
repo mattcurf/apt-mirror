@@ -14,5 +14,37 @@ deb-amd64 http://deb.debian.org/debian trixie-updates main contrib non-free non-
 deb-arm64 http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
 
+# Debian Bookworm
+#deb-amd64 http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+#deb-arm64 http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+#deb-src http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+
+#deb-amd64 http://deb.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+#deb-arm64 http://deb.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+#deb-src http://deb.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+
+#deb-amd64 http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+#deb-arm64 http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+#deb-src http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+
+# Ubuntu 24.04 (Noble Numbat)
+#deb-amd64 http://archive.ubuntu.com/ubuntu noble main restricted universe multiverse
+#deb-arm64 http://ports.ubuntu.com/ubuntu-ports noble main restricted universe multiverse
+#deb-src http://archive.ubuntu.com/ubuntu noble main restricted universe multiverse
+
+#deb-amd64 http://archive.ubuntu.com/ubuntu noble-updates main restricted universe multiverse
+#deb-arm64 http://ports.ubuntu.com/ubuntu-ports noble-updates main restricted universe multiverse
+#deb-src http://archive.ubuntu.com/ubuntu noble-updates main restricted universe multiverse
+
+#deb-amd64 http://archive.ubuntu.com/ubuntu noble-security main restricted universe multiverse
+#deb-arm64 http://ports.ubuntu.com/ubuntu-ports noble-security main restricted universe multiverse
+#deb-src http://archive.ubuntu.com/ubuntu noble-security main restricted universe multiverse
+
+#deb-amd64 http://archive.ubuntu.com/ubuntu noble-backports main restricted universe multiverse
+#deb-arm64 http://ports.ubuntu.com/ubuntu-ports noble-backports main restricted universe multiverse
+#deb-src http://archive.ubuntu.com/ubuntu noble-backports main restricted universe multiverse
+
 clean http://deb.debian.org/debian
 clean http://deb.debian.org/debian-security
+#clean http://archive.ubuntu.com/ubuntu
+#clean http://ports.ubuntu.com/ubuntu-ports

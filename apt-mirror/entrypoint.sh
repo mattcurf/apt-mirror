@@ -3,6 +3,10 @@ set -e
 
 CRON_SCHEDULE="${CRON_SCHEDULE:-0 2 * * *}"
 
+mkdir -p /var/spool/apt-mirror/var
+touch /var/spool/apt-mirror/var/postmirror.sh
+chmod +x /var/spool/apt-mirror/var/postmirror.sh
+
 echo "Running initial apt-mirror sync..."
 apt-mirror
 
